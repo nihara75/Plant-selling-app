@@ -13,7 +13,7 @@ class _PlantListState extends State<PlantList> {
   List<String> ab = [
     'Aloe vera is a succelent plant of the genus Aloe. I\'ts medicinal uses and air purifying ability make it the plant that you shouldn\'t live without.',
     'Some other description',
-    'Third description'
+    'Third description',
     'Fourth description'
   ];
 String desc;
@@ -65,7 +65,7 @@ String desc;
                 ),
                Padding(
                   padding: const EdgeInsets.all(20.0),
-                  child: Plant(image: "assets/img_main.png",
+                  child: Plant(image: "assets/img.png",
                       name: "ALOE VERA",
                       price: "\$15",
                       country: "INDIA"),
@@ -96,7 +96,7 @@ String desc;
             Padding(
 
               padding: const EdgeInsets.all(20.0),
-              child: Text('$desc',style:TextStyle(color:Colors.black54)),
+              child: Text('$desc',style:TextStyle(color:Color(0xFF0C9869))),
             ),]
         );
 
@@ -118,15 +118,15 @@ class Plant extends StatelessWidget {
   Widget build(BuildContext context) {
     return
        Container(
-         width: MediaQuery.of(context).size.width * 0.4,
+         width: MediaQuery.of(context).size.width * 0.5,
 
 
         child:Column(
           children: <Widget>[
             Stack(alignment:Alignment.center,children: [
-              Image.asset(image),
+              Image.asset(image,height:205 ,),
               Padding(
-                padding: const EdgeInsets.only(bottom:150),
+                padding: const EdgeInsets.only(bottom:155),
                 child: Container(
                     width: 50.0,
                     height: 50.0,

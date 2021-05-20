@@ -11,7 +11,7 @@ class Feature extends StatefulWidget {
 
 class _FeatureState extends State<Feature> with SingleTickerProviderStateMixin {
   TabController tabc;
-
+  GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey();
 
   @override
   void initState() {
@@ -19,21 +19,87 @@ class _FeatureState extends State<Feature> with SingleTickerProviderStateMixin {
     tabc = TabController(vsync: this, length: 3);
 
     super.initState();
-
-
   }
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        key: _scaffoldKey,
+        endDrawerEnableOpenDragGesture: false,
+        drawer: Container(
+          width:250,
+          child: Drawer(
+              child: ListView(children: [
+                DrawerHeader(
+                  decoration: BoxDecoration(
+                    color: Color(0xFF0C9869),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(20.0),
+                    child: Text('Green Shop',style:TextStyle(fontWeight: FontWeight.bold,fontFamily:'EBGaramond' ,fontSize: 30,color: Colors.white)),
+                  ),
+                ),
+                Card(
+                  color:Color(0xFF0C9869),
+                  shadowColor:Colors.grey,
+                  elevation: 5,
+                  child: ListTile(
+                    leading:Icon(Icons.person_pin_circle_outlined,color: Colors.white,) ,
+                    title: Text('Account',style:TextStyle(fontWeight: FontWeight.bold,fontFamily:'EBGaramond' ,fontSize: 20,color: Colors.white)),
+                    onTap: () {
+                      // Update the state of the app.
+                      // ...
+                    },
+                  ),
+                ),
+                Card(
+                  color: Color(0xFF0C9869),
+               elevation: 5,
+               shadowColor: Colors.grey,
+               child: ListTile(
+                 leading:Icon(Icons.list_alt_outlined,color:Colors.white),
+                  title: Text('Orders',style:TextStyle(fontWeight: FontWeight.bold,fontFamily:'EBGaramond' ,fontSize: 20,color: Colors.white)),
+                  onTap: () {
+                    // Update the state of the app.
+                    // ...
+                  },
+                )),
+                Card(
+                    color: Color(0xFF0C9869),
+                    elevation: 5,
+                    shadowColor: Colors.grey,
+                    child: ListTile(
+                      leading:Icon(Icons.contact_phone_outlined,color:Colors.white),
+                      title: Text('Contact',style:TextStyle(fontWeight: FontWeight.bold,fontFamily:'EBGaramond' ,fontSize: 20,color: Colors.white)),
+                      onTap: () {
+                        // Update the state of the app.
+                        // ...
+                      },
+                    )),
+                Card(
+                    color: Color(0xFF0C9869),
+                    elevation: 5,
+                    shadowColor: Colors.grey,
+                    child: ListTile(
+                      leading:Icon(Icons.contact_support_outlined,color:Colors.white),
+                      title: Text('Suggestions',style:TextStyle(fontWeight: FontWeight.bold,fontFamily:'EBGaramond' ,fontSize: 20,color: Colors.white)),
+                      onTap: () {
+                        // Update the state of the app.
+                        // ...
+                      },
+                    )),
+              ])),
+        ),
         body: ListView(children: <Widget>[
           Container(
               child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
                 InkWell(
-                  onTap: () {},
+                  onTap: () {
+                    _scaffoldKey.currentState.openDrawer();
+                  },
                   child: Padding(
                     padding: const EdgeInsets.all(20.0),
                     child: Center(
@@ -90,20 +156,16 @@ class _FeatureState extends State<Feature> with SingleTickerProviderStateMixin {
                               fontSize: 20, fontFamily: 'EBGaramond'))),
                 )
               ]),
-
-            Container(
-                height: MediaQuery.of(context).size.height - 100.0,
-                child: TabBarView(
-                  controller: tabc,
-                  children: [PlantList(), PlantList(), PlantList()],
-                )),
-
-
-
-
-
+          Container(
+              height: MediaQuery.of(context).size.height - 100.0,
+              child: TabBarView(
+                controller: tabc,
+                children: [PlantList(), PlantList(), PlantList()],
+              )),
         ]),
       ),
     );
   }
 }
+
+
